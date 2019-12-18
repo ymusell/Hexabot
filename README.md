@@ -26,6 +26,7 @@ Corentin JEGAT
 Alexandre Courjaud  
 Matthieu Bouveron  
 Philibert ADAM  
+Driss Tayebi  
 
 ### Gestion de projet
 
