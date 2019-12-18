@@ -21,7 +21,7 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 ## Groupe
 
 ### Membres
-Yann Musellec
+Yann Musellec  
 Corentin JEGAT  
 Alexandre Courjaud  
 Matthieu Bouveron  
