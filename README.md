@@ -24,6 +24,10 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 Corentin JEGAT
 Alexandre Courjaud
+Matthieu Bouveron
+
+###### A compléter avec les membres du groupe.
+
 
 ### Gestion de projet
 
