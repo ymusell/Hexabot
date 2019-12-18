@@ -49,7 +49,6 @@
 
             </collision>
         </link>
-
         <gazebo reference="MP_BODY">
             <material>Gazebo/YellowGlow</material>
         </gazebo>
