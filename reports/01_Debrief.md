@@ -5,29 +5,29 @@ PO: Corentin Jegat
 
 ## Bilan
 
-Pourcentage de tâches réalisées: ... %
+Pourcentage de tâches réalisées: 100 %
 
 ### Ce qui a fonctionné
 
-###### A compléter.
+###### Prise en main de Git réussie et nous avons bien listé les "user stories". Chacun a également vérifié le bon fonctionnement de la simulation.
 
 
 ### Ce qui n'a pas fonctionné
 
-###### A compléter.
+###### Rien
 
 
 ### Retour d'expérience du PO
 
-###### A compléter.
+###### Nous avons un peu perdu de temps sur la partie Git mais cela était néanmoins nécessaire pour que le développement futur se passe proprement.
 
 
 ### Conseils pour le prochain PO
 
-###### A compléter.
+###### Contiuer d'avoir une communication constante afin de ne pas se perdre dans un développement inutile ou qui entre en conflit avec un autre travail d'un camarade.
 
 
 
 ## Nouvelles mesures
 
-###### A compléter avec les nouvelles mesures prises pour répondre aux problèmes rencontrées par l'équipe pendant le sprint. Ces mesures peuvent aller d'une convention de nommage à un changement radical dans la construction du robot, ou encore un flow spécifique de travail.
+###### Pas encore de nouvelles mesure.
