@@ -22,13 +22,13 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Membres
 
+Corentin JEGAT
 Alexandre Courjaud
 Matthieu Bouveron
 
 ###### A compléter avec les membres du groupe.
 
 Philibert ADAM
-
 
 ### Gestion de projet
 
