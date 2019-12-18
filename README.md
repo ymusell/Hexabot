@@ -22,14 +22,13 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Membres
 <<<<<<< HEAD
-<<<<<<< HEAD
 Alexandre Courjaud
-=======
-Corentin JEGAT
-=======
-Yann Musellec
->>>>>>> Changement Nom
-
+Corentin JEGAT  
+Alexandre Courjaud  
+Matthieu Bouveron  
+Philibert ADAM  
+Driss Tayebi  
+>>>>>>> contenu modifié
 
 ### Gestion de projet
 
