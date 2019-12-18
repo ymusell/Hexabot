@@ -7,14 +7,15 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Dépendences
 
-###### A compléter avec la/les dépendences.
+
 
 
 ### Démarrer la simulation
 
 ###### A compléter avec la/les commande(s) à lancer.
 ```bash
-# TODO
+# Lancer gazebo avec la demo walker.py  
+roslaunch phantomx_gazebo phantomx_gazebo.launch
 ```
 
 
