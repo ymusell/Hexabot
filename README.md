@@ -6,17 +6,15 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 ## Lancer la simulation
 
 ### Dépendences
-
-
+ros-melodic-effort-controllers
 
 
 ### Démarrer la simulation
 
-###### A compléter avec la/les commande(s) à lancer.
 ```bash
-# Lancer gazebo avec la demo walker.py  
 roslaunch phantomx_gazebo phantomx_gazebo.launch
 ```
+Lancer gazebo avec la demo walker.py
 
 
 ## Groupe
@@ -34,9 +32,9 @@ Driss Tayebi
 
 ### Gestion de projet
 
-###### A compléter avec le lien vers votre [Taiga](http://taiga.io).
-
-
+<<<<<<< HEAD
+https://tree.taiga.io/project/erysme-hexapode_nom_groupe/
+>>>>>>> Updated README (#11)
 
 ## Structure du dépôt
 
