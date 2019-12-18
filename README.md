@@ -24,21 +24,15 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 <<<<<<< HEAD
 Alexandre Courjaud
+=======
 Corentin JEGAT
-Alexandre Courjaud
-Matthieu Bouveron
 
-###### A compléter avec les membres du groupe.
-
->>>>>>> Updated README.md with my name
-
-Philibert ADAM
 
 ### Gestion de projet
 
 ###### A compléter avec le lien vers votre [Taiga](http://taiga.io).
 
-https://tree.taiga.io/project/erysme-hexapode_nom_groupe/
+
 
 ## Structure du dépôt
 
