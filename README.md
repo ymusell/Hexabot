@@ -24,12 +24,13 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ###### A compléter avec les membres du groupe.
 
+Philibert ADAM
 
 ### Gestion de projet
 
 ###### A compléter avec le lien vers votre [Taiga](http://taiga.io).
 
-
+https://tree.taiga.io/project/erysme-hexapode_nom_groupe/
 
 ## Structure du dépôt
 
