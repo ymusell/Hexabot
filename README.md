@@ -22,7 +22,8 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Membres
 
-###### A compléter avec les membres du groupe.
+
+Alexandre Courjaud
 
 
 ### Gestion de projet
