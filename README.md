@@ -22,8 +22,11 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Membres
 
-
+<<<<<<< HEAD
 Alexandre Courjaud
+=======
+Corentin JEGAT
+>>>>>>> add corentin
 
 
 ### Gestion de projet
