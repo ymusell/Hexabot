@@ -4,6 +4,8 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Float64
 
+from sensor_msgs.msg import LaserScan
+
 
 class PhantomX:
     """Client ROS class for manipulating PhantomX in Gazebo"""
@@ -12,6 +14,7 @@ class PhantomX:
         self.ns = ns
         self.joints = None
         self.angles = None
+        self.lidar_ranges = None
 
         self._sub_joints = rospy.Subscriber(
             ns + 'joint_states', JointState, self._cb_joints, queue_size=1)
@@ -30,9 +33,13 @@ class PhantomX:
                 ns + j + '_position_controller/command', Float64, queue_size=1)
             self._pub_joints[j] = p
 
+        self._sub_lidar = rospy.Subscriber(ns+"scan", LaserScan, self._cb_lidar)  #change to real topic name
+
+
         rospy.sleep(1)
 
         self._pub_cmd_vel = rospy.Publisher(ns + 'cmd_vel', Twist, queue_size=1)
+
 
     def set_walk_velocity(self, x, y, t):
         msg = Twist()
@@ -45,6 +52,9 @@ class PhantomX:
         if self.joints is None:
             self.joints = msg.name
         self.angles = msg.position
+
+    def _cb_lidar(self,msg):
+        self.lidar_ranges = msg.ranges
 
     def get_angles(self):
         if self.joints is None:
@@ -74,6 +84,13 @@ class PhantomX:
             self.set_angles(angles)
             r.sleep()
 
+    def get_lidar_ranges(self):
+        if self.lidar_ranges is None:
+            return None
+        return self.lidar_ranges
+
+    def set_lidar_ranges(self, range):
+        self.lidar_ranges = range
 
 def interpolate(anglesa, anglesb, coefa):
     z = {}
