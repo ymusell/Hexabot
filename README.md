@@ -6,8 +6,8 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 ## Lancer la simulation
 
 ### Dépendences
-ros-melodic-effort-controllers
 
+ros-melodic-effort-controllers  
 
 ### Démarrer la simulation
 
@@ -29,6 +29,13 @@ Matthieu Bouveron
 Philibert ADAM  
 Driss Tayebi  
 >>>>>>> contenu modifié
+
+Philibert ADAM
+ 
+
+
+
+
 
 ### Gestion de projet
 

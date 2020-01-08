@@ -5,6 +5,10 @@
     <xacro:property name="thigh_offset_y" value="-0.0645"/>
     <xacro:property name="thigh_offset_z" value="-0.0145"/>
 
+    <xacro:property name="lenght_lidar" value="0.04" />
+    <xacro:property name="radius_lidar" value="0.03" />
+    <xacro:property name="mass_lidar" value="0.1" />
+
     <xacro:macro name="phantomx" params="parent *origin">
 
 
@@ -13,6 +17,8 @@
             <child link="MP_BODY"/>
             <insert_block name="origin"/>
         </joint>
+
+<!-- ############# Link ####################### -->
 
         <link name="MP_BODY">
             <inertial>
@@ -52,6 +58,8 @@
     </xacro:macro>
 
     <xacro:macro name="leg_l" params="xyz rpy suffix">
+
+
 
         <link name="c1_${suffix}">
             <inertial>
@@ -163,6 +171,11 @@
             <selfCollide>1</selfCollide>
         </gazebo>
 
+
+
+
+<!-- ################## Joint #################### -->
+
         <joint name="j_c1_${suffix}" type="revolute">
             <parent link="MP_BODY"/>
             <child link="c1_${suffix}"/>
@@ -192,6 +205,12 @@
             <axis xyz="1 0 0"/>
             <limit effort="2.8" velocity="5.6548668" lower="-2.6179939" upper="2.6179939"/>
         </joint>
+
+
+
+
+<!-- ################### transmission ##################### -->
+
 
         <transmission name="t_c1_${suffix}">
             <type>transmission_interface/SimpleTransmission</type>
@@ -226,6 +245,9 @@
             </actuator>
         </transmission>
 
+
+<!-- ###################### reference #################### -->
+
         <gazebo reference="c1_${suffix}">
             <material>Gazebo/RedGlow</material>
         </gazebo>
@@ -243,5 +265,39 @@
         </gazebo>
 
     </xacro:macro>
+
+<!--  ###################  Lidar ###################### -->
+
+<link name="lidar">
+    <collision>
+        <geometry>
+            <cylinder length="${lenght_lidar}" radius="${radius_lidar}"/>
+            <origin rpy="0 0 0" xyz="0 0 ${-lenght_lidar/2}}"/>
+        </geometry>
+    </collision>
+
+    <visual>
+        <geometry>
+            <cylinder length="${lenght_lidar}" radius="${radius_lidar}"/>
+            <origin rpy="0 0 0" xyz="0 0 ${-lenght_lidar/2}"/>
+        </geometry>
+        <material name="red"/>
+    </visual>
+
+    <inertial>
+        <mass value="0"/>
+        <inertia
+            ixx="${mass_lidar*lenght_lidar*lenght_lidar/12.0+mass_lidar*radius_lidar*radius_lidar/2.0}" ixy="0.0" ixz="0.0"
+            iyy="${mass_lidar*lenght_lidar*lenght_lidar/12.0+mass_lidar*radius_lidar*radius_lidar/2.0}" iyz="0.0"
+            izz="${mass_lidar*radius_lidar*radius_lidar}"/>
+    </inertial>
+
+</link>
+
+<joint name="lidar_joint" type="fixed">
+    <parent link="MP_BODY"/>
+    <child link="lidar"/>
+    <origin rpy="0 0 0" xyz="0 0 ${0.045/2+lenght_lidar/2}"/>
+</joint>
 
 </robot>
