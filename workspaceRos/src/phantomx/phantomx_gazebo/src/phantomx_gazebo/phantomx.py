@@ -33,7 +33,7 @@ class PhantomX:
                 ns + j + '_position_controller/command', Float64, queue_size=1)
             self._pub_joints[j] = p
 
-        self._sub_lidar = rospy.Subscriber(ns+"scan", LaserScan, self._cb_lidar)  #change to real topic name
+        self._sub_lidar = rospy.Subscriber(ns+"scan", LaserScan, self._cb_lidar)  #change to real topic name 
 
 
         rospy.sleep(1)

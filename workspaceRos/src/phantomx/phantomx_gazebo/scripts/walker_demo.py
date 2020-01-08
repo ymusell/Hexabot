@@ -1,16 +1,9 @@
 #!/usr/bin/env python
-
+import sys
 import rospy
 
 from phantomx_gazebo.phantomx import PhantomX
 
-regions_ = {
-    'right': 0,
-    'fright': 0,
-    'front': 0,
-    'fleft': 0,
-    'left': 0,
-}
 state_ = 0
 state_dict_ = {
     0: 'find the wall',
@@ -25,15 +18,17 @@ def change_state(state):
         state_ = state
 
 def take_action():
-    global regions_
     regions = regions_
     robot.set_walk_velocity(0, 0, 0)
     
     state_description = ''
     
-    d = 2.0
+    d = 2.5
     
-    if regions['front'] > d and regions['fleft'] > d and regions['fright'] > d:
+    if regions['right'] < 0.5:
+        state_description = 'case 0 - right'
+        change_state(1)
+    elif regions['front'] > d and regions['fleft'] > d and regions['fright'] > d:
         state_description = 'case 1 - nothing'
         change_state(0)
     elif regions['front'] < d and regions['fleft'] > d and regions['fright'] > d:
@@ -66,11 +61,10 @@ def find_wall():
     rospy.sleep(0.2)
 
 def turn_left():
-    robot.set_walk_velocity(0.4, 0, 0.5)
+    robot.set_walk_velocity(0.7, 0, 0.5)
     rospy.sleep(0.2)
 
 def follow_the_wall():
-    global regions_
     
     robot.set_walk_velocity(1, 0, 0)
     rospy.sleep(0.2)
@@ -85,14 +79,14 @@ if __name__ == '__main__':
     rospy.loginfo('Walker Demo Starting')
 
     #print robot.lidar_ranges[180]                  #180=front, 270=left, 90=right
-    
+
     while True:
         global regions_
         regions_ = {
             'left':  min(min(robot.lidar_ranges[260:280]), 10),
-            'fleft': min(min(robot.lidar_ranges[210:240]), 10),
+            'fleft': min(min(robot.lidar_ranges[190:260]), 10),
             'front':  min(min(robot.lidar_ranges[170:190]), 10),
-            'fright':  min(min(robot.lidar_ranges[120:150]), 10),
+            'fright':  min(min(robot.lidar_ranges[100:170]), 10),
             'right':   min(min(robot.lidar_ranges[80:100]), 10),
         }
         take_action()
