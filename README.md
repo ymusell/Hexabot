@@ -30,9 +30,7 @@ Driss Tayebi
 
 ### Gestion de projet
 
-<<<<<<< HEAD
 https://tree.taiga.io/project/erysme-hexapode_nom_groupe/
->>>>>>> Updated README (#11)
 
 ## Structure du dépôt
 

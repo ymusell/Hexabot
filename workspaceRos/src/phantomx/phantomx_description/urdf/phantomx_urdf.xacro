@@ -11,6 +11,7 @@
 
     <xacro:macro name="phantomx" params="parent *origin">
 
+
         <joint name="j_phantomx_attachment" type="fixed">
             <parent link="${parent}"/>
             <child link="MP_BODY"/>
@@ -40,6 +41,7 @@
 
             </collision>
         </link>
+
         <gazebo reference="MP_BODY">
             <material>Gazebo/YellowGlow</material>
         </gazebo>
@@ -264,6 +266,7 @@
 
     </xacro:macro>
 
+<<<<<<< HEAD
 <!--  ###################  Lidar ###################### -->
 
 <link name="lidar">
@@ -297,5 +300,112 @@
     <child link="lidar"/>
     <origin rpy="0 0 0" xyz="0 0 ${0.045/2+lenght_lidar/2}"/>
 </joint>
+
+    <!-- ################################################################# -->
+    <!-- ###    Camera  ################################################## -->
+    <!-- ################################################################# -->
+
+    <!-- Add camera object -->
+    <link name="camera">
+        <visual>
+            <geometry>
+                <box size="0.02 0.02 0.02" />
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- Add wonderful color to camera -->
+    <gazebo reference="camera">
+        <material>Gazebo/BlueGlow</material>
+    </gazebo>
+
+    <!-- Add link between camera and body object -->
+    <joint name="body2camera" type="fixed">
+        <parent link="MP_BODY"/>
+        <child link="camera"/>
+        <origin rpy="0 0 0" xyz="0.11 0 0"/>
+    </joint>
+
+    <!-- Add camera description 
+    <gazebo reference="camera">
+        <sensor type="camera" name="camera1">
+            <update_rate>30.0</update_rate>
+            <camera name="head">
+                <horizontal_fov>1.3962634</horizontal_fov>
+                <image>
+                    <width>800</width>
+                    <height>800</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>0.0</updateRate>
+            <cameraName>rrbot/camera1</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo> -->
+
+    <gazebo reference="camera">
+        <sensor name='camera1' type='depth'>
+            <always_on>1</always_on>
+            <visualize>1</visualize>
+            <camera name='head'>
+                <horizontal_fov>1.047</horizontal_fov>
+                    <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <depth_camera>
+                    <output>depths</output>
+                </depth_camera>
+                <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+                </clip>
+            </camera>
+            <plugin name='camera_controller' filename='libgazebo_ros_openni_kinect.so'>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>camera</cameraName>
+            <frameName>/camera_link</frameName>
+            <imageTopicName>rgb/image_raw</imageTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+            <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudCutoff>0.4</pointCloudCutoff>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            <CxPrime>0.0</CxPrime>
+            <Cx>0.0</Cx>
+            <Cy>0.0</Cy>
+            <focalLength>0.0</focalLength>
+            </plugin>
+        </sensor>
+    </gazebo>
 
 </robot>
