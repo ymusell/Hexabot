@@ -7,10 +7,7 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Dépendences
 
-
-
 ros-melodic-effort-controllers  
-
 
 ### Démarrer la simulation
 
@@ -23,22 +20,13 @@ Lancer gazebo avec la demo walker.py
 ## Groupe
 
 ### Membres
-<<<<<<< HEAD
-Alexandre Courjaud
+
 Yann Musellec  
 Corentin JEGAT  
 Alexandre Courjaud  
 Matthieu Bouveron  
 Philibert ADAM  
 Driss Tayebi  
->>>>>>> contenu modifié
-
-Philibert ADAM
- 
-
-
-
-
 
 ### Gestion de projet
 

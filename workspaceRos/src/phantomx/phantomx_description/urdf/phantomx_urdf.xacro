@@ -11,15 +11,6 @@
 
     <xacro:macro name="phantomx" params="parent *origin">
 
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-
-=======
->>>>>>> reports (#10)
->>>>>>> reports (#10)
         <joint name="j_phantomx_attachment" type="fixed">
             <parent link="${parent}"/>
             <child link="MP_BODY"/>
