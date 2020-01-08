@@ -44,6 +44,18 @@
 
         <gazebo reference="MP_BODY">
             <material>Gazebo/YellowGlow</material>
+            <light name='cylinder/light_source1' type='spot'>
+                <pose>-0.15 -0.02 0 1.57 0 1.77</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
+            <light name='cylinder/light_source2' type='spot'>
+                <pose>-0.15 0.02 0 1.57 0 1.37</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
+            <light name='cylinder/light_source3' type='spot'>
+                <pose>-0.15 0.02 0 2 0 1.57</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
         </gazebo>
 
 
