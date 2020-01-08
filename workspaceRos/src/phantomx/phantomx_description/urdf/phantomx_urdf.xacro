@@ -512,6 +512,7 @@
 
 
 
+
 <gazebo>
     <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
       <alwaysOn>true</alwaysOn>
@@ -524,6 +525,8 @@
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
 </gazebo>
+
+
 
 
 
