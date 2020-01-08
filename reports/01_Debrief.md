@@ -15,6 +15,7 @@ Pourcentage de tâches réalisées: 100 %
 
 ###### Rien
 
+
 ### Retour d'expérience du PO
 
 ###### Nous avons un peu perdu de temps sur la partie Git mais cela était néanmoins nécessaire pour que le développement futur se passe proprement.
@@ -28,4 +29,3 @@ Pourcentage de tâches réalisées: 100 %
 ## Nouvelles mesures
 
 ###### Pas encore de nouvelles mesure.
-
