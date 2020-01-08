@@ -1,33 +1,38 @@
-# Debrief du 18/12/2019
+# Debrief du 08/01/2020
 
-PO: Corentin Jegat
+PO: Matthieu Bouveron
 
 
 ## Bilan
 
-Pourcentage de tâches réalisées: 100 %
+Pourcentage de tâches réalisées: 70 %
 
 ### Ce qui a fonctionné
 
-###### Prise en main de Git réussie et nous avons bien listé les "user stories". Chacun a également vérifié le bon fonctionnement de la simulation.
+- Majorité des tâches ont été terminées assez vite, ce qui a permis de commencer le travail de la semaine prochaine.
+- Ajouts fonctionnels dans urdf
 
 
 ### Ce qui n'a pas fonctionné
 
-###### Rien
+- On est manifestement pas encore à l'aise sur git
+- Gestion de la position
+- Documentation des éléments lumineux gazebo
+- Wifi
 
 
 ### Retour d'expérience du PO
 
-###### Nous avons un peu perdu de temps sur la partie Git mais cela était néanmoins nécessaire pour que le développement futur se passe proprement.
+- Beaucoup de difficultés dans l'utilisation propre de git pour le travail en équipe, mais la situation s'améliore petit à petit.
+- Difficile de prévoir correctement la longueur des tâches, certaines ne sont pas complètement terminées, certaines étaient terminées à la moitié du temps prévu...
 
 
 ### Conseils pour le prochain PO
 
-###### Contiuer d'avoir une communication constante afin de ne pas se perdre dans un développement inutile ou qui entre en conflit avec un autre travail d'un camarade.
+- Bien mettre au clair les tâches à réaliser dans la journée et les interactions qui seront nécessaires entre les différents membres de l'équipe
 
 
 
 ## Nouvelles mesures
 
-###### Pas encore de nouvelles mesure.
+- Commits et variables en anglais
