@@ -1,0 +1,9 @@
+<launch> 
+
+
+<include file="$(find phantomx_gazebo)/launch/phantomx_gazebo.launch">
+     </include>
+
+
+
+</launch> 
