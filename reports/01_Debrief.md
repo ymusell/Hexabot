@@ -25,7 +25,6 @@ Pourcentage de tâches réalisées: 100 %
 
 ###### Contiuer d'avoir une communication constante afin de ne pas se perdre dans un développement inutile ou qui entre en conflit avec un autre travail d'un camarade.
 
-
 ## Nouvelles mesures
 
 ###### Pas encore de nouvelles mesure.
