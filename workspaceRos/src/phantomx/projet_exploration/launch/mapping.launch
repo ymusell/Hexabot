@@ -1,5 +1,10 @@
 <launch> 
 
+<include file="$(find phantomx_gazebo)/launch/phantomx_gazebo.launch" />
+
+<node name="mapping" pkg="projet_exploration" type="mapping.py" />
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find projet_exploration)/config/configRviz.rviz" />
 
 
 </launch> 

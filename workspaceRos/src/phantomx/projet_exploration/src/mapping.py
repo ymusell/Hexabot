@@ -18,9 +18,17 @@ pos_y = 0
 def mapping():
 	global map_array, distance_list, angle_list
 	for i in range (0,len(distance_list)):
-		x = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x
-		y = int(10*distance_list[i]*np.sin(angle_list[i]))+250+pos_y
-		map_array[y,x] = 100
+                xWall = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x  # distance (m), grid (cm)
+                yWall = int(10*distance_list[i]*np.sin(angle_list[i]))+250+pos_y
+                map_array[yWall,xWall] = 100
+
+                rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
+                for j in range(0,len(rangeEmpty)):
+                    xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+pos_x)
+                    yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+pos_y)
+                    if map_array[yEmpty,xEmpty] == -1:
+                        map_array[yEmpty,xEmpty] = 0
+
 
 
 def publishMap(pub_map,msg_map):
