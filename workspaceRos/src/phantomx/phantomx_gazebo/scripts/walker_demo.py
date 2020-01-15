@@ -23,10 +23,15 @@ def take_action():
     
     state_description = ''
     
+<<<<<<< HEAD
 
     #d=2.5
     d   = (regions['right']+regions['left'])
     dRL = 0.7*(regions['right']+regions['left'])/2
+=======
+    d = 2*regions['right']
+    dRL = 0.5*(regions['right']+regions['left'])/2
+>>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
     
     if regions['right'] < dRL:
         state_description = 'case 0 - right'
@@ -62,12 +67,21 @@ def take_action():
         state_description = 'unknown case'
         rospy.loginfo(regions)
 
+<<<<<<< HEAD
 def turn_right():
     robot.set_walk_velocity(1, 0, -0.5)
     rospy.sleep(0.2)
 
 def turn_left():
     robot.set_walk_velocity(1, 0, 0.5)
+=======
+def find_wall():
+    robot.set_walk_velocity(0.5, 0, -1)
+    rospy.sleep(0.2)
+
+def turn_left():
+    robot.set_walk_velocity(0.5, 0, 0.5)
+>>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
     rospy.sleep(0.2)
 
 def go_forward():

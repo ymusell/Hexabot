@@ -69,6 +69,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
 
+
   ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
   ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
 
@@ -76,7 +77,6 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe("ground_truth/state", 1000, chatterCallback1);
   
 
-  
   //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
 
   ros::Rate loop_rate(5);
@@ -94,4 +94,8 @@ int main(int argc, char **argv)
     loop_rate.sleep();
     }
 return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
