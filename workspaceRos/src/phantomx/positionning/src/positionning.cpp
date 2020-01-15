@@ -64,7 +64,7 @@ void chatterCallback1(const nav_msgs::Odometry &msg)
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "orientation_position_vitesse_vector");
+  ros::init(argc, argv, "positionning");
 
   ros::NodeHandle n;
 

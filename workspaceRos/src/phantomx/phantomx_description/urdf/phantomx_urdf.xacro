@@ -460,10 +460,7 @@
     </gazebo>
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
     <!--  ###################  Centrale inertielle ###################### -->
 
     <joint name="imu_joint" type="fixed">
@@ -494,27 +491,26 @@
     	</collision>
     </link>
 
-    <gazebo reference="imu_link">
-    	<gravity>true</gravity>
-    	<sensor name="imu_sensor" type="imu">
-    		<always_on>true</always_on>
-    		<update_rate>100</update_rate>
-    		<visualize>true</visualize>
-    		<topic>__default_topic__</topic>
-    		<plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-    			<topicName>phantomx/imu</topicName>
-    			<bodyName>imu_link</bodyName>
-    			<updateRateHZ>10.0</updateRateHZ>
-    			<gaussianNoise>0.0</gaussianNoise>
-    			<xyzOffset>0 0 0</xyzOffset>
-    			<rpyOffset>0 0 0</rpyOffset>
-    			<frameName>imu_link</frameName>
-    		</plugin>
-    		<pose>0 0 0 0 0 0</pose>
-    	</sensor>
-    </gazebo>
-
-
+ 
+<gazebo reference="imu_link">
+	<gravity>true</gravity>
+	<sensor name="imu_sensor" type="imu">
+		<always_on>true</always_on>
+		<update_rate>100</update_rate>
+		<visualize>true</visualize>
+		<topic>__default_topic__</topic>
+		<plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+			<topicName>phantomx/imu</topicName>
+			<bodyName>imu_link</bodyName>
+			<updateRateHZ>10.0</updateRateHZ>
+			<gaussianNoise>0.0</gaussianNoise>
+			<xyzOffset>0 0 0</xyzOffset>
+			<rpyOffset>0 0 0</rpyOffset>
+			<frameName>imu_link</frameName>
+		</plugin>
+		<pose>0 0 0 0 0 0</pose>
+	</sensor>
+</gazebo>
 
 <gazebo>
     <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
@@ -528,6 +524,8 @@
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
 </gazebo>
+
+
 
 
 
