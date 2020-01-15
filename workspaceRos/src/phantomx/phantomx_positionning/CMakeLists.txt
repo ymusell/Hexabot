@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(positionnement)
+project(phantomx_positionning)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -9,10 +9,10 @@ project(positionnement)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
-  gazebo_ros_control
+  gazebo_ros_control	
   geometry_msgs
-  message_generation
   hector_gazebo_plugins
+  message_generation
   message_runtime
   nav_msgs
   roscpp
@@ -114,8 +114,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES positionnement
-#  CATKIN_DEPENDS gazebo_ros gazebo_ros_control geometry_msgs message_generation message_runtime nav_msgs roscpp rospy sensor_msgs std_msgs std_srvs tf
+#  LIBRARIES phantomx_positionning
+#  CATKIN_DEPENDS gazebo gazebo_ros geometry_msgs hector_gazebo_plugins message_generation message_runtime nav_msgs ros_control roscpp rospy sensor_msgs std_msgs std_srvs tf
 #  DEPENDS system_lib
 )
 
@@ -132,7 +132,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/positionnement.cpp
+#   src/${PROJECT_NAME}/phantomx_positionning.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -143,8 +143,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/positionnement_node.cpp)
-add_executable(orientation_position_vitesse_vector src/positionnement.cpp)
+# add_executable(${PROJECT_NAME}_node src/phantomx_positionning_node.cpp)
+add_executable(phantomx_positionning src/ph_positionning.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -160,10 +160,9 @@ add_executable(orientation_position_vitesse_vector src/positionnement.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(orientation_position_vitesse_vector
+target_link_libraries(phantomx_positionning
 ${catkin_LIBRARIES}
 )
-
 #############
 ## Install ##
 #############
@@ -211,7 +210,7 @@ ${catkin_LIBRARIES}
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_positionnement.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_phantomx_positionning.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
