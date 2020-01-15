@@ -68,12 +68,15 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
 
+
+  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
+  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
+
   ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1000, chatterCallback);
   ros::Subscriber sub = n.subscribe("ground_truth/state", 1000, chatterCallback1);
   
 
-  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
-  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
+  
   //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
 
   ros::Rate loop_rate(5);
