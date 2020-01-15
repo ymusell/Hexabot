@@ -5,7 +5,7 @@
     <xacro:property name="thigh_offset_y" value="-0.0645"/>
     <xacro:property name="thigh_offset_z" value="-0.0145"/>
 
-    <xacro:property name="lenght_lidar" value="0.04" />
+    <xacro:property name="lenght_lidar" value="0.08" />
     <xacro:property name="radius_lidar" value="0.03" />
     <xacro:property name="mass_lidar" value="0.1" />
 
@@ -44,6 +44,18 @@
 
         <gazebo reference="MP_BODY">
             <material>Gazebo/YellowGlow</material>
+            <light name='cylinder/light_source1' type='spot'>
+                <pose>0.15 -0.02 0 -1.57 0 1.77</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
+            <light name='cylinder/light_source2' type='spot'>
+                <pose>0.15 0.02 0 -1.57 0 1.37</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
+            <light name='cylinder/light_source3' type='spot'>
+                <pose>0.15 0.02 0 -2 0 1.57</pose>
+                <specular> 0 0 0 0 </specular>
+            </light>
         </gazebo>
 
 
@@ -285,7 +297,6 @@
             <cylinder length="${lenght_lidar}" radius="${radius_lidar}"/>
             <origin rpy="0 0 0" xyz="0 0 ${-lenght_lidar/2}"/>
         </geometry>
-        <material name="red"/>
     </visual>
 
     <inertial>
@@ -308,7 +319,7 @@
 <gazebo reference="lidar">
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose> 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>5</update_rate>
       <ray>
         <scan>
@@ -336,6 +347,11 @@
       </plugin>
     </sensor>
   </gazebo>
+
+  <!-- Add wonderful color to lidar -->
+    <gazebo reference="lidar">
+        <material>Gazebo/WhiteGlow</material>
+    </gazebo>
 
 
 

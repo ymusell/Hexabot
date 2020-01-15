@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+    <node name="fissure_identification" pkg="projet_exploration" type="id_on_test_images.py"  output='screen'/>
+
+</launch>
