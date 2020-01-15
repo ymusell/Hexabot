@@ -83,7 +83,7 @@ if __name__ == '__main__':
     #marker_fissure.ns = 'ns_'+'test'
     marker_fissure.id = 0
     marker_fissure.action = 0
-    marker_fissure.type = 4
+    marker_fissure.type = 8
     q = quaternion_from_euler(0,0,0)
     marker_fissure.pose.orientation.x = q[0]
     marker_fissure.pose.orientation.y = q[1]
@@ -91,6 +91,7 @@ if __name__ == '__main__':
     marker_fissure.pose.orientation.w = q[3]
 
     marker_fissure.scale.x = 0.05
+    marker_fissure.scale.y = 0.05
     marker_fissure.color.r = 1
     marker_fissure.color.g = 0
     marker_fissure.color.b = 0
