@@ -18,6 +18,8 @@ distance_list = []
 pos_x = -10
 pos_y = -10
 heading = 0
+pitch = 0
+roll = 0
 
 
 check_position = 0 #check if we have new data for position and orientation
@@ -27,15 +29,16 @@ check_lidar = 0
 def mapping():
     global map_array, distance_list, angle_list, pos_x, pos_y
     for i in range (0,len(distance_list)):
-        xWall = int(10*distance_list[i]*np.cos(angle_list[i])+250+10*pos_x)  # distance (m), grid (cm)
-        yWall = int(10*distance_list[i]*np.sin(angle_list[i])+250+10*pos_y)
-        map_array[yWall,xWall] = 100
+        if (distance_list[i] < 5):
+            xWall = int(10*distance_list[i]*np.cos(angle_list[i])+250+10*pos_x)  # distance (m), grid (cm)
+            yWall = int(10*distance_list[i]*np.sin(angle_list[i])+250+10*pos_y)
+            map_array[yWall,xWall] = 100
 
-        rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
-        for j in range(0,len(rangeEmpty)):
-            xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+10*pos_x)
-            yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+10*pos_y)
-            map_array[yEmpty,xEmpty] = 0
+            rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
+            for j in range(0,len(rangeEmpty)):
+                xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+10*pos_x)
+                yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+10*pos_y)
+                map_array[yEmpty,xEmpty] = 0
 
 
 
@@ -48,9 +51,10 @@ def publishMap(pub_map,msg_map):
 
 def sub_lidar(msg):
     global angle_list, distance_list, check_lidar
-    distance_list = msg.ranges
-    angle_list = np.arange(msg.angle_min+heading,msg.angle_max+heading,msg.angle_increment)
-    check_lidar = 1
+    if (abs(roll) < 0.05) and (abs(pitch)<0.05):
+        distance_list = msg.ranges
+        angle_list = np.arange(msg.angle_min+heading,msg.angle_max+heading,msg.angle_increment)
+        check_lidar = 1
 
 def sub_position(msg):
     global pos_x, pos_y, check_position
@@ -61,9 +65,11 @@ def sub_position(msg):
 
 
 def sub_orientation(msg):
-    global heading, check_orientation
+    global roll, pitch, heading, check_orientation
     if ( abs(heading - msg.z) > 0.001):
         heading = msg.z
+        roll = msg.x
+        pitch = msg.y
         check_orientation = 1
 
 
