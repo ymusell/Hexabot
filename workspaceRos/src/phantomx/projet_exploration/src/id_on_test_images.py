@@ -40,7 +40,7 @@ def create_grid(rows=480, cols=640, space=3):
 
 
 def rgb_fissure_to_binary(image, grid):
-	hsv_img = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+	hsv_img = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
 
 	# define range of red color in HSV (because cracks appear red in the cave ???)
 	lower_red1 = np.array([0,200,100])
@@ -60,7 +60,7 @@ def rgb_fissure_to_binary(image, grid):
 
 	sampled_detection = cv2.bitwise_and(skeleton, skeleton, mask = grid)
 
-	return sampled_detection
+	return sampled_detection==255
 
 
 

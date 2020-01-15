@@ -7,7 +7,11 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Dépendences
 
-ros-melodic-effort-controllers  
+ros-melodic-effort-controllers  # contrôleur
+cv2                             # traitement d'image
+numpy                           # calcul
+matplotlib                      # affichage simple
+scikit-image                    # traitement d'image
 
 ### Démarrer la simulation
 
