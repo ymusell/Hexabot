@@ -9,6 +9,7 @@ Panels:
         - /Grid1
         - /LaserScan1
         - /Map1
+        - /Axes1
         - /RobotModel1
       Splitter Ratio: 0.5
     Tree Height: 575
@@ -103,7 +104,7 @@ Visualization Manager:
       Length: 1
       Name: Axes
       Radius: 0.10000000149011612
-      Reference Frame: <Fixed Frame>
+      Reference Frame: MP_BODY
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
@@ -269,7 +270,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -292,7 +293,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 39.09601974487305
+      Distance: 58.05068588256836
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

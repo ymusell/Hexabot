@@ -4,5 +4,6 @@
 
 <node name="mapping" pkg="projet_exploration" type="mapping.py" output="screen"/>
 <node name="orientation_position_vitesse_vector" pkg="positionnement" type="orientation_position_vitesse_vector" />
+<node name="cave_explorer" pkg="phantomx_control" type="cave_explorer.py" />
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find projet_exploration)/config/configRviz.rviz" />
 </launch> 
