@@ -17,14 +17,16 @@ pos_y = 0
 cap_robot = 0
 
 def mapping():
-<<<<<<< HEAD
+
+
+ update mapping
     global map_array, distance_list, angle_list, pos_x, pos_y
     print(pos_x,pos_y)
     for i in range (0,len(distance_list)):
         xWall = int(10*distance_list[i]*np.cos(angle_list[i])+250+10*pos_x)  # distance (m), grid (cm)
         yWall = int(10*distance_list[i]*np.sin(angle_list[i])+250+10*pos_y)
         map_array[yWall,xWall] = 100
-=======
+
 	global map_array, distance_list, angle_list
 	for i in range (0,len(distance_list)):
                 xWall = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x  # distance (m), grid (cm)
@@ -38,7 +40,22 @@ def mapping():
                     if map_array[yEmpty,xEmpty] == -1:
                         map_array[yEmpty,xEmpty] = 0
 
->>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
+
+
+	global map_array, distance_list, angle_list
+	for i in range (0,len(distance_list)):
+                xWall = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x  # distance (m), grid (cm)
+                yWall = int(10*distance_list[i]*np.sin(angle_list[i]))+250+pos_y
+                map_array[yWall,xWall] = 100
+
+                rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
+                for j in range(0,len(rangeEmpty)):
+                    xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+pos_x)
+                    yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+pos_y)
+                    if map_array[yEmpty,xEmpty] == -1:
+                        map_array[yEmpty,xEmpty] = 0
+
+    update mapping
 
         rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
         for j in range(0,len(rangeEmpty)):
@@ -68,7 +85,8 @@ def sub_position(msg):
     pos_y = msg.y
 
 if __name__ == "__main__":
-<<<<<<< HEAD
+
+update mapping
     rospy.init_node("mapping")
 
     pub_map = rospy.Publisher("/map",OccupancyGrid,queue_size=10)
@@ -96,7 +114,7 @@ if __name__ == "__main__":
         mapping()
         publishMap(pub_map,msg_map)
         rate.sleep()
-=======
+update mapping
 	rospy.init_node("mapping")
 
 	rospy.Subscriber("/phantomx/scan",LaserScan,sub_lidar)
@@ -122,4 +140,6 @@ if __name__ == "__main__":
 		mapping()
 		publishMap(pub_map,msg_map)
 		rate.sleep()
->>>>>>> 7bc4fc7fb81fa4c1f6cf3be97ff2cb8c9dfc0f90
+
+        update mapping
+        update mapping
