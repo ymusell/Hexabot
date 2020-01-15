@@ -2,6 +2,11 @@
 
 ROS package providing ROS controller description and launch files for the Phantom X hexapod robot
 
+## Usage
+
+With Gazebo running, you can run a launch the script with:
+
+    rosrun phantomx_control cave_explorer.py
 
 ## License
 

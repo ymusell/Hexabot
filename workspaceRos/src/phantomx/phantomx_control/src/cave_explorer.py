@@ -76,13 +76,13 @@ def go_forward():
     rospy.sleep(0.2)
 
 if __name__ == '__main__':
-    rospy.init_node('walker_demo')
+    rospy.init_node('hexabot_exploration')
 
     rospy.loginfo('Instantiating robot Client')
     robot = PhantomX()
     rospy.sleep(1)
 
-    rospy.loginfo('Walker Demo Starting')
+    rospy.loginfo('Cave Exploration Starting')
 
     #print robot.lidar_ranges[180]                  #180=front, 270=left, 90=right
 
@@ -121,4 +121,4 @@ if __name__ == '__main__':
     # rospy.sleep(5)
     # robot.set_walk_velocity(0, 0, 0)
 
-    rospy.loginfo('Walker Demo Finished')
+    rospy.loginfo('Cave Exploration Finished')
