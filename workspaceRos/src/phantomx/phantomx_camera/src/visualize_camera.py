@@ -92,8 +92,8 @@ if __name__ == '__main__':
 
     marker_fissure.scale.x = 0.05
     marker_fissure.scale.y = 0.05
-    marker_fissure.color.r = 1
-    marker_fissure.color.g = 0
+    marker_fissure.color.r = 0
+    marker_fissure.color.g = 1
     marker_fissure.color.b = 0
     marker_fissure.color.a = 1.0
 
@@ -104,6 +104,7 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
 
         try:
+            #t0 = rospy.get_time()
             binary_image = rgb_fissure_to_binary(rgb_image, grid)
             x,y,z = binary_image_to_xyz(binary_image, depth_image)
             """
@@ -114,6 +115,7 @@ if __name__ == '__main__':
             plt.pause(0.01)
             """
             publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
+            #print(rospy.get_time()-t0)
         except:
             pass
 

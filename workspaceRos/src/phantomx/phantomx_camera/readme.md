@@ -23,3 +23,7 @@ Librairie utilisée par visualize_camera.
 ### id_on_test_image
 
 Librairie utilisée par tester les algorithmes de traitement d'image.
+
+### sort fissures
+
+Programme qui s'abonne aux points courants d'une faille et qui classe chaque faille.
