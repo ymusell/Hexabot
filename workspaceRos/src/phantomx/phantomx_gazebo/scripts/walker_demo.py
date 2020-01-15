@@ -6,9 +6,9 @@ from phantomx_gazebo.phantomx import PhantomX
 
 state_ = 0
 state_dict_ = {
-    0: 'find the wall',
+    0: 'turn right',
     1: 'turn left',
-    2: 'follow the wall',
+    2: 'go forward'
 }
 
 def change_state(state):
@@ -23,45 +23,49 @@ def take_action():
     
     state_description = ''
     
-    d = 2.5
+    d = 2*regions['right']
+    dRL = 0.5*(regions['right']+regions['left'])/2
     
-    if regions['right'] < 0.5:
+    if regions['right'] < dRL:
         state_description = 'case 0 - right'
         change_state(1)
+    elif regions['left'] < dRL:
+        state_description = 'case 1 - left'
+        change_state(0)
     elif regions['front'] > d and regions['fleft'] > d and regions['fright'] > d:
-        state_description = 'case 1 - nothing'
+        state_description = 'case 2 - nothing'
         change_state(0)
     elif regions['front'] < d and regions['fleft'] > d and regions['fright'] > d:
-        state_description = 'case 2 - front'
+        state_description = 'case 3 - front'
         change_state(1)
     elif regions['front'] > d and regions['fleft'] > d and regions['fright'] < d:
-        state_description = 'case 3 - fright'
+        state_description = 'case 4 - fright'
         change_state(2)
     elif regions['front'] > d and regions['fleft'] < d and regions['fright'] > d:
-        state_description = 'case 4 - fleft'
+        state_description = 'case 5 - fleft'
         change_state(0)
     elif regions['front'] < d and regions['fleft'] > d and regions['fright'] < d:
-        state_description = 'case 5 - front and fright'
+        state_description = 'case 6 - front and fright'
         change_state(1)
     elif regions['front'] < d and regions['fleft'] < d and regions['fright'] > d:
-        state_description = 'case 6 - front and fleft'
+        state_description = 'case 7 - front and fleft'
         change_state(1)
     elif regions['front'] < d and regions['fleft'] < d and regions['fright'] < d:
-        state_description = 'case 7 - front and fleft and fright'
+        state_description = 'case 8 - front and fleft and fright'
         change_state(1)
     elif regions['front'] > d and regions['fleft'] < d and regions['fright'] < d:
-        state_description = 'case 8 - fleft and fright'
+        state_description = 'case 9 - fleft and fright'
         change_state(0)
     else:
         state_description = 'unknown case'
         rospy.loginfo(regions)
 
 def find_wall():
-    robot.set_walk_velocity(1, 0, -1)
+    robot.set_walk_velocity(0.5, 0, -1)
     rospy.sleep(0.2)
 
 def turn_left():
-    robot.set_walk_velocity(0.7, 0, 0.5)
+    robot.set_walk_velocity(0.5, 0, 0.5)
     rospy.sleep(0.2)
 
 def follow_the_wall():

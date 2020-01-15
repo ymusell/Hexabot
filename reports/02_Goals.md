@@ -15,7 +15,7 @@ PO: Matthieu Bouveron
 ## Tâches à réaliser
 - Lier le déplacement du robot aux commandes publiées dans cmd_vel (Philibert)
 - Ajouter des lampes au robot pour qu'il puisse éclairer son environnement (Yann)
-- AJouter une caméra 3D au robot pour qu'il puisse prendre des images de son environnement (Corentin)
+- Ajouter une caméra 3D au robot pour qu'il puisse prendre des images de son environnement (Corentin)
 - Publier ces images dans un topic (Corentin)
 - Ajouter une IMU au robot et accéder à ses mesures (Driss)
 - Ajouter un LIDAR au robot et accéder à ses mesures (Alexandre)
