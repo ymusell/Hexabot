@@ -45,6 +45,8 @@ def take_action():
 
 
 
+
+
     #d=2.5
     d   = (regions['right']+regions['left'])
     dRL = 0.7*(regions['right']+regions['left'])/2
@@ -58,7 +60,10 @@ def take_action():
     dRL = 0.5*(regions['right']+regions['left'])/2
     add goal 3 (#34)
     add goal 3 (#34)
+<<<<<<< HEAD
     add goal 3 (#34)
+=======
+>>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572
     
     if regions['right'] < dRL:
     add goal 3 (#34)
@@ -111,17 +116,25 @@ def turn_right():
 def turn_left():
     robot.set_walk_velocity(1, 0, 0.5)
 
+<<<<<<< HEAD
 >>>>>>> add goal 3 (#34)
 def find_wall():
     robot.set_walk_velocity(0.5, 0, -1)
 add goal 3 (#34)
+=======
+def find_wall():
+    robot.set_walk_velocity(0.5, 0, -1)
+>>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572
     rospy.sleep(0.2)
 
 def turn_left():
     robot.set_walk_velocity(0.5, 0, 0.5)
 
+<<<<<<< HEAD
 
 add goal 3 (#34)
+=======
+>>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572
     rospy.sleep(0.2)
 
 def go_forward():

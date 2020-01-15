@@ -25,11 +25,44 @@ check_orientation = 0
 check_lidar = 0
 
 def mapping():
+
+
+ update mapping
     global map_array, distance_list, angle_list, pos_x, pos_y
     for i in range (0,len(distance_list)):
         xWall = int(10*distance_list[i]*np.cos(angle_list[i])+250+10*pos_x)  # distance (m), grid (cm)
         yWall = int(10*distance_list[i]*np.sin(angle_list[i])+250+10*pos_y)
         map_array[yWall,xWall] = 100
+
+	global map_array, distance_list, angle_list
+	for i in range (0,len(distance_list)):
+                xWall = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x  # distance (m), grid (cm)
+                yWall = int(10*distance_list[i]*np.sin(angle_list[i]))+250+pos_y
+                map_array[yWall,xWall] = 100
+
+                rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
+                for j in range(0,len(rangeEmpty)):
+                    xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+pos_x)
+                    yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+pos_y)
+                    if map_array[yEmpty,xEmpty] == -1:
+                        map_array[yEmpty,xEmpty] = 0
+
+
+
+	global map_array, distance_list, angle_list
+	for i in range (0,len(distance_list)):
+                xWall = int(10*distance_list[i]*np.cos(angle_list[i]))+250+pos_x  # distance (m), grid (cm)
+                yWall = int(10*distance_list[i]*np.sin(angle_list[i]))+250+pos_y
+                map_array[yWall,xWall] = 100
+
+                rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
+                for j in range(0,len(rangeEmpty)):
+                    xEmpty = int(10*rangeEmpty[j]*np.cos(angle_list[i])+250+pos_x)
+                    yEmpty = int(10*rangeEmpty[j]*np.sin(angle_list[i])+250+pos_y)
+                    if map_array[yEmpty,xEmpty] == -1:
+                        map_array[yEmpty,xEmpty] = 0
+
+    update mapping
 
         rangeEmpty = np.arange(0,distance_list[i]-0.1,0.1)
         for j in range(0,len(rangeEmpty)):
@@ -69,6 +102,8 @@ def sub_orientation(msg):
 
 
 if __name__ == "__main__":
+
+update mapping
     rospy.init_node("mapping")
 
     pub_map = rospy.Publisher("/map",OccupancyGrid,queue_size=10)
@@ -120,3 +155,32 @@ if __name__ == "__main__":
             check_lidar = 0
         publishMap(pub_map,msg_map)
         rate.sleep()
+update mapping
+	rospy.init_node("mapping")
+
+	rospy.Subscriber("/phantomx/scan",LaserScan,sub_lidar)
+	pub_map = rospy.Publisher("/map",OccupancyGrid,queue_size=10)
+	msg_map = OccupancyGrid()
+
+	msg_map.header.frame_id = "base_link"
+	msg_map.info.map_load_time = rospy.get_rostime()
+	msg_map.info.resolution = 0.1
+	msg_map.info.width  = 500
+	msg_map.info.height = 500
+	msg_map.info.origin.position.x = -25
+	msg_map.info.origin.position.y = -25
+	msg_map.info.origin.position.z = 0
+	msg_map.info.origin.orientation.x = 0
+	msg_map.info.origin.orientation.y = 0
+	msg_map.info.origin.orientation.z = 0
+	msg_map.info.origin.orientation.w = 0
+
+
+	rate = rospy.Rate(5)
+	while not rospy.is_shutdown():
+		mapping()
+		publishMap(pub_map,msg_map)
+		rate.sleep()
+
+        update mapping
+        update mapping
