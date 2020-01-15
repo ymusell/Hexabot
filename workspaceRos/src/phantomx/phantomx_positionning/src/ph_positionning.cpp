@@ -64,16 +64,23 @@ void chatterCallback1(const nav_msgs::Odometry &msg)
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "orientation_position_vitesse_vector");
+  ros::init(argc, argv, "phantomx_positionning");
 
   ros::NodeHandle n;
+
+
+<<<<<<< HEAD:workspaceRos/src/phantomx/phantomx_positionning/src/ph_positionning.cpp
+=======
+
+>>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572:workspaceRos/src/phantomx/positionnement/src/positionnement.cpp
+  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
+  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
 
   ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1000, chatterCallback);
   ros::Subscriber sub = n.subscribe("ground_truth/state", 1000, chatterCallback1);
   
 
-  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
-  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
+
   //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
 
   ros::Rate loop_rate(5);
@@ -91,4 +98,9 @@ int main(int argc, char **argv)
     loop_rate.sleep();
     }
 return 0;
+<<<<<<< HEAD:workspaceRos/src/phantomx/phantomx_positionning/src/ph_positionning.cpp
 }
+
+=======
+>>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572:workspaceRos/src/phantomx/positionnement/src/positionnement.cpp
+
