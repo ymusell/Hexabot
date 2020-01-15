@@ -59,6 +59,7 @@ def publish_point_fissure(pub, marker, x,y,z):
 		p.z = z[i]
 		l_points.append(p)
 	marker.points = l_points
+	#print(marker.points, marker.type)
 	pub.publish(marker)
 
 

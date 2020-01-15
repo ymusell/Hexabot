@@ -17,9 +17,12 @@ from cv_bridge import CvBridge, CvBridgeError
 
 import rospy
 #from std_msgs.msg import Float32
-from geometry_msgs.msg import Vector3
+from visualization_msgs.msg import Marker
 from sensor_msgs.msg import PointCloud2
 from sensor_msgs.msg import Image
+from tf.transformations import quaternion_from_euler
+
+from camera_lib import *
 
 
 ##############################################################################################
@@ -40,6 +43,11 @@ def sub_image_rgb(data):
 #      Other functions
 ##############################################################################################
 
+def waiting_ros_camera():
+    global depth_image, rgb_image, height, width
+    rgb_image = np.load('rgb.npy')
+    depth_image = np.load('depth.npy')
+    height, width = rgb_image.shape[0], rgb_image.shape[1]
 
 
 ##############################################################################################
@@ -53,25 +61,49 @@ if __name__ == '__main__':
     rgb_image = None
     height, width = None, None
 
-    pub_relevent_points = rospy.Publisher('relevent_points', Vector3, queue_size=10)
-    relevent_points_msg = Vector3()
     rospy.Subscriber("/camera/depth/image_raw", Image, sub_image_depth)
     rospy.Subscriber("/camera/rgb/image_raw", Image, sub_image_rgb)
+
+    pub_fissure = rospy.Publisher('current_fissure', Marker, queue_size=10)
 
     node_name = 'visualize_camera'
     rospy.init_node(node_name)
     rospy.loginfo("{} is launched".format(node_name))
-    rate = rospy.Rate(10) # 10hz
+    rate = rospy.Rate(2) # 10hz
 
+    marker_fissure = Marker()
+    marker_fissure.header.frame_id = 'MP_BODY'
+    """
+    marker_fissure.pose.position.x = 0
+    marker_fissure.pose.position.y = 0
+    marker_fissure.pose.position.z = 0
+    """
+    marker_fissure.header.stamp = rospy.get_rostime()
+    #marker_fissure.ns = 'ns_'+'test'
+    marker_fissure.id = 0
+    marker_fissure.action = 0
+    marker_fissure.type = 4
+    q = quaternion_from_euler(0,0,0)
+    marker_fissure.pose.orientation.x = q[0]
+    marker_fissure.pose.orientation.y = q[1]
+    marker_fissure.pose.orientation.z = q[2]
+    marker_fissure.pose.orientation.w = q[3]
 
+    marker_fissure.scale.x = 0.05
+    marker_fissure.color.r = 1
+    marker_fissure.color.g = 0
+    marker_fissure.color.b = 0
+    marker_fissure.color.a = 1.0
+    
+
+    waiting_ros_camera()
+    binary_image = color_image_to_binary(rgb_image)
+
+    x,y,z = binary_image_to_xyz(binary_image, depth_image)
 
     while not rospy.is_shutdown():
-
-        plt.subplot('121')
-        plt.imshow(rgb_image)
-        plt.subplot('122')
-        plt.imshow(depth_image)
-        plt.pause(0.01)
+        publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
+        
         #np.save('rgb', rgb_image)
         #np.save('depth', depth_image)
 
