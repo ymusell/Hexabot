@@ -20,6 +20,11 @@ roslaunch phantomx_gazebo phantomx_gazebo.launch
 ```
 Lancer gazebo avec la demo walker.py
 
+Pour lancer l'exploration de la grotte
+
+```bash
+roslaunch phantomx_mapping exploration.launch
+```
 
 ## Groupe
 
