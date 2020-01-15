@@ -14,7 +14,7 @@ state_dict_ = {
 def change_state(state):
     global state_, state_dict_
     if state is not state_:
-        print 'Hexabot - [%s] - %s' % (state, state_dict_[state])
+        #print 'Hexabot - [%s] - %s' % (state, state_dict_[state])
         state_ = state
 
 def take_action():
