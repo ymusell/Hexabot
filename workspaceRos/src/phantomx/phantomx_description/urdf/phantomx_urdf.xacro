@@ -458,6 +458,7 @@
         </sensor>
     </gazebo>
 
+<<<<<<< HEAD
 <!--  ###################  Centrale inertielle ###################### -->
 
 <joint name="imu_joint" type="fixed">
@@ -508,6 +509,8 @@
 	</sensor>
 </gazebo>
 
+=======
+>>>>>>> positionnement
 
     <!--  ###################  Centrale inertielle ###################### -->
 
@@ -559,8 +562,11 @@
     	</sensor>
     </gazebo>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> positionnement
 <gazebo>
     <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
       <alwaysOn>true</alwaysOn>
@@ -575,6 +581,7 @@
 </gazebo>
 
 
+<<<<<<< HEAD
 
 
 
@@ -582,4 +589,6 @@
 
 
 
+=======
+>>>>>>> positionnement
 </robot>
