@@ -14,7 +14,7 @@ state_dict_ = {
 def change_state(state):
     global state_, state_dict_
     if state is not state_:
-        print 'Wall follower - [%s] - %s' % (state, state_dict_[state])
+        print 'Hexabot - [%s] - %s' % (state, state_dict_[state])
         state_ = state
 
 def take_action():
@@ -23,8 +23,10 @@ def take_action():
     
     state_description = ''
     
-    d = 2*regions['right']
-    dRL = 0.5*(regions['right']+regions['left'])/2
+
+    #d=2.5
+    d   = (regions['right']+regions['left'])
+    dRL = 0.7*(regions['right']+regions['left'])/2
     
     if regions['right'] < dRL:
         state_description = 'case 0 - right'
@@ -60,15 +62,15 @@ def take_action():
         state_description = 'unknown case'
         rospy.loginfo(regions)
 
-def find_wall():
-    robot.set_walk_velocity(0.5, 0, -1)
+def turn_right():
+    robot.set_walk_velocity(1, 0, -0.5)
     rospy.sleep(0.2)
 
 def turn_left():
-    robot.set_walk_velocity(0.5, 0, 0.5)
+    robot.set_walk_velocity(1, 0, 0.5)
     rospy.sleep(0.2)
 
-def follow_the_wall():
+def go_forward():
     
     robot.set_walk_velocity(1, 0, 0)
     rospy.sleep(0.2)
@@ -87,20 +89,20 @@ if __name__ == '__main__':
     while True:
         global regions_
         regions_ = {
-            'left':  min(min(robot.lidar_ranges[260:280]), 10),
-            'fleft': min(min(robot.lidar_ranges[190:260]), 10),
-            'front':  min(min(robot.lidar_ranges[170:190]), 10),
-            'fright':  min(min(robot.lidar_ranges[100:170]), 10),
-            'right':   min(min(robot.lidar_ranges[80:100]), 10),
+            'left':  min(min(robot.lidar_ranges[240:280]), 10),
+            'fleft': min(min(robot.lidar_ranges[210:240]), 10),
+            'front':  min(min(robot.lidar_ranges[150:210]), 10),
+            'fright':  min(min(robot.lidar_ranges[130:150]), 10),
+            'right':   min(min(robot.lidar_ranges[80:120]), 10),
         }
         take_action()
 
         if state_ == 0:
-            find_wall()
+            turn_right()
         elif state_ == 1:
             turn_left()
         elif state_ == 2:
-            follow_the_wall()
+            go_forward()
             pass
         else:
             rospy.logerr('Unknown state!')

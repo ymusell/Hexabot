@@ -23,6 +23,7 @@ from sensor_msgs.msg import Image
 from tf.transformations import quaternion_from_euler
 
 from camera_lib import *
+from id_on_test_images import *
 
 
 ##############################################################################################
@@ -94,14 +95,21 @@ if __name__ == '__main__':
     marker_fissure.color.g = 0
     marker_fissure.color.b = 0
     marker_fissure.color.a = 1.0
+
+    grid = create_grid()
+    
     
 
-    waiting_ros_camera()
-    binary_image = color_image_to_binary(rgb_image)
-
-    x,y,z = binary_image_to_xyz(binary_image, depth_image)
-
     while not rospy.is_shutdown():
+
+        binary_image = rgb_fissure_to_binary(rgb_image, grid)
+        print(np.sum(binary_image))
+        x,y,z = binary_image_to_xyz(binary_image, depth_image)
+        plt.subplot('121')
+        plt.imshow(rgb_image)
+        plt.subplot('122')
+        plt.imshow(binary_image)
+        plt.pause(0.01)
         publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
         
         #np.save('rgb', rgb_image)
