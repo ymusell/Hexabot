@@ -58,7 +58,7 @@ def take_action():
     dRL = 0.5*(regions['right']+regions['left'])/2
     add goal 3 (#34)
     add goal 3 (#34)
->>>>>>> add goal 3 (#34)
+    add goal 3 (#34)
     
     if regions['right'] < dRL:
     add goal 3 (#34)
@@ -107,8 +107,7 @@ def take_action():
 def turn_right():
     robot.set_walk_velocity(0.7, 0, -0.5)
 
-<<<<<<< HEAD
-=======
+
 def turn_left():
     robot.set_walk_velocity(1, 0, 0.5)
 
@@ -120,10 +119,9 @@ add goal 3 (#34)
 
 def turn_left():
     robot.set_walk_velocity(0.5, 0, 0.5)
-<<<<<<< HEAD
-=======
 
->>>>>>> add goal 3 (#34)
+
+add goal 3 (#34)
     rospy.sleep(0.2)
 
 def go_forward():

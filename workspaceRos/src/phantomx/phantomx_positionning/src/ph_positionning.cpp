@@ -76,7 +76,7 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe("ground_truth/state", 1000, chatterCallback1);
   
 
-  
+
   //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
 
   ros::Rate loop_rate(5);
