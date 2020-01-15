@@ -46,15 +46,48 @@
             <material>Gazebo/YellowGlow</material>
             <light name='cylinder/light_source1' type='spot'>
                 <pose>0.15 -0.02 0 -1.57 0 1.77</pose>
-                <specular> 0 0 0 0 </specular>
+                <diffuse> 1 1 1 1 </diffuse>
+                <attenuation>
+                    <range> 10 </range>
+                    <linear> 0  </linear>
+                    <constant> 0.05 </constant>
+                    <quadratic> 0 </quadratic>
+                </attenuation>
+                <spot>
+                    <inner_angle> 2 </inner_angle>
+                    <outer_angle> 2 </outer_angle>
+                    <falloff> 0 </falloff>
+                </spot>
             </light>
             <light name='cylinder/light_source2' type='spot'>
                 <pose>0.15 0.02 0 -1.57 0 1.37</pose>
-                <specular> 0 0 0 0 </specular>
+                <diffuse> 1 1 1 1 </diffuse>
+                <attenuation>
+                    <range> 10 </range>
+                    <linear> 0  </linear>
+                    <constant> 0.05 </constant>
+                    <quadratic> 0 </quadratic>
+                </attenuation>
+                <spot>
+                    <inner_angle> 2 </inner_angle>
+                    <outer_angle> 2 </outer_angle>
+                    <falloff> 0 </falloff>
+                </spot>
             </light>
             <light name='cylinder/light_source3' type='spot'>
                 <pose>0.15 0.02 0 -2 0 1.57</pose>
-                <specular> 0 0 0 0 </specular>
+                <diffuse> 1 1 1 1 </diffuse>
+                <attenuation>
+                    <range> 10 </range>
+                    <linear> 0  </linear>
+                    <constant> 0.05 </constant>
+                    <quadratic> 0 </quadratic>
+                </attenuation>
+                <spot>
+                    <inner_angle> 2 </inner_angle>
+                    <outer_angle> 2 </outer_angle>
+                    <falloff> 0 </falloff>
+                </spot>
             </light>
         </gazebo>
 
