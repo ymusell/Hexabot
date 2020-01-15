@@ -10,18 +10,11 @@ Pourcentage de tâches réalisées: 100 %
 ### Ce qui a fonctionné
 
 ###### Prise en main de Git réussie et nous avons bien listé les "user stories". Chacun a également vérifié le bon fonctionnement de la simulation.
-<<<<<<< HEAD
-=======
-
->>>>>>> debriefs and goals
 
 ### Ce qui n'a pas fonctionné
 
 ###### Rien
-<<<<<<< HEAD
-=======
 
->>>>>>> debriefs and goals
 
 ### Retour d'expérience du PO
 
@@ -31,17 +24,7 @@ Pourcentage de tâches réalisées: 100 %
 ### Conseils pour le prochain PO
 
 ###### Contiuer d'avoir une communication constante afin de ne pas se perdre dans un développement inutile ou qui entre en conflit avec un autre travail d'un camarade.
-<<<<<<< HEAD
 
 ## Nouvelles mesures
 
 ###### Pas encore de nouvelles mesure.
-
-=======
-
-
-
-## Nouvelles mesures
-
-###### Pas encore de nouvelles mesure.
->>>>>>> debriefs and goals
