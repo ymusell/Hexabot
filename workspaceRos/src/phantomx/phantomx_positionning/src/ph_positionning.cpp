@@ -51,6 +51,7 @@ geometry_msgs::Point ToEulerAngles(geometry_msgs::Quaternion q) {
 void chatterCallback(const sensor_msgs::Imu::ConstPtr& msg)
 {
         orien = msg->orientation;
+        ROS_INFO("Positionning Node is running");
         
 }
 
@@ -69,11 +70,13 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
 
-  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
-  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
 
-  ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1000, chatterCallback);
-  ros::Subscriber sub = n.subscribe("ground_truth/state", 1000, chatterCallback1);
+  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1);  //Second argument changed to 1:
+  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1);        //We always want the newest values.
+  
+
+  ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1, chatterCallback);
+  ros::Subscriber sub = n.subscribe("ground_truth/state", 1, chatterCallback1);
   
 
 
@@ -94,6 +97,8 @@ int main(int argc, char **argv)
     loop_rate.sleep();
     }
 return 0;
+
 }
+
 
 

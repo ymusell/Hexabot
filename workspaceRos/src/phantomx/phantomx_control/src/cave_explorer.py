@@ -84,7 +84,7 @@ if __name__ == '__main__':
     rospy.loginfo('Cave Exploration Starting')
 
     #print robot.lidar_ranges[180]                  #180=front, 270=left, 90=right
-    rate = rospy.Rate(25)
+    rate = rospy.Rate(5)
     while not rospy.is_shutdown():
         global regions_
         regions_ = {

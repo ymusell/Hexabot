@@ -27,6 +27,7 @@ def sub_lidar(msg):
     global lidar
     lidar = msg
 
+
 def sub_position(msg):
     global pos_x, pos_y, check_position
     if ( abs(pos_x - msg.x) > 0.01):
@@ -57,7 +58,6 @@ if __name__ == "__main__":
 
     transformStamped.child_frame_id = "base_link"
     transformStamped.header.frame_id = "base_stabilized"
-
 
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():

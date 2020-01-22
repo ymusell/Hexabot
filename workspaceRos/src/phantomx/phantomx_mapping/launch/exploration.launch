@@ -12,6 +12,8 @@
 <node name="cave_explorer" pkg="phantomx_control" type="cave_explorer.py" />
 <node name="phantomx_positionning" pkg="phantomx_positionning" type="phantomx_positionning" />
 <node name="filtreLidar" pkg="phantomx_mapping" type="filtreLidar.py" />
+
+
 <include file="$(find phantomx_camera)/launch/camera.launch" />
 
 

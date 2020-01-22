@@ -8,6 +8,7 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 ### Dépendences
 
 - ros-melodic-effort-controllers  # contrôleur  
+- ros-melodic-hector-mapping      # positionnement
 - cv2  (version 3.2.0 tested)     # traitement d'image  
 - numpy                           # calcul  
 - matplotlib                      # affichage simple  

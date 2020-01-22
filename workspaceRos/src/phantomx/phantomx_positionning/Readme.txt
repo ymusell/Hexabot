@@ -10,4 +10,4 @@ RUN :
 
 - in the path /workspaceRos/src/phantomx/phantomx_positionning
 
-- command : rosrun phantox_positionning positionning_positionning
+- command : rosrun phantomx_positionning positionning_positionning

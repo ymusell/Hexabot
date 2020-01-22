@@ -65,7 +65,7 @@ if __name__ == '__main__':
     rospy.Subscriber("/camera/depth/image_raw", Image, sub_image_depth)
     rospy.Subscriber("/camera/rgb/image_raw", Image, sub_image_rgb)
 
-    pub_fissure = rospy.Publisher('current_fissure', Marker, queue_size=10)
+    pub_fissure = rospy.Publisher('current_fissure', Marker, queue_size=1) # queue_size = 1, we only want the newest image
 
     node_name = 'visualize_camera'
     rospy.init_node(node_name)
