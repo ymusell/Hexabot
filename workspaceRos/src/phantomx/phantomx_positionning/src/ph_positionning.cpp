@@ -71,6 +71,11 @@ int main(int argc, char **argv)
 
 
 
+
+  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
+  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
+
+
   ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1);  //Second argument changed to 1:
   ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1);        //We always want the newest values.
   
@@ -99,6 +104,7 @@ int main(int argc, char **argv)
 return 0;
 
 }
+
 
 
 
