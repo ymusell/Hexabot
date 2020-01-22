@@ -10,6 +10,24 @@ from geometry_msgs.msg import Point
 
 def binary_image_to_xyz(binary_image, depth_image):
 
+	horizontal_fov = 1.047
+	height, width = binary_image.shape
+	d_theta = width/(2*horizontal_fov)
+	i,j = np.where(binary_image == True)
+	w = j-width//2
+	h = -(i-height//2)
+	d = depth_image[i,j]
+	th_width = w/d_theta
+	th_height = h/d_theta
+	dxy = d*np.cos(th_height)
+	z = d*np.sin(th_height)
+	x = dxy*np.cos(th_width)
+	y = -dxy*np.sin(th_width)
+
+	return x,y,z
+
+def binary_image_to_xyz_old(binary_image, depth_image):
+
 	x,y,z = [],[],[]
 	horizontal_fov = 1.047
 	height, width = binary_image.shape

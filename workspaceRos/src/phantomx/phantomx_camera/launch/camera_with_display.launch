@@ -1,6 +1,6 @@
 <launch> 
 
-	<node name="camera" pkg="phantomx_camera" type="visualize_camera.py" />
-	<node name="sort_fissures" pkg="phantomx_camera" type="sort_fissures.py" />
+	<node name="camera" pkg="phantomx_camera" type="visualize_camera.py" output="screen"/>
+	<node name="sort_fissures" pkg="phantomx_camera" type="sort_fissures.py" output="screen"/>
 
-</launch> 
+</launch>
