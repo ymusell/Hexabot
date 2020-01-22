@@ -69,7 +69,7 @@ int main(int argc, char **argv)
         
     	position_pub.publish(position);
     	orientation_pub.publish(orientation);
-œ
+
     	ros::spinOnce();
     	loop_rate.sleep();
 	}
