@@ -145,6 +145,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/phantomx_positionning_node.cpp)
 add_executable(phantomx_positionning src/ph_positionning.cpp)
+add_executable(phantomx_positioning src/pos_tf.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -161,6 +162,9 @@ add_executable(phantomx_positionning src/ph_positionning.cpp)
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(phantomx_positionning
+${catkin_LIBRARIES}
+)
+target_link_libraries(phantomx_positioning
 ${catkin_LIBRARIES}
 )
 #############
