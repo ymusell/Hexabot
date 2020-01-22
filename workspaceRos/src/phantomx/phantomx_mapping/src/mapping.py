@@ -165,34 +165,7 @@ if __name__ == "__main__":
             mapping()
             check_orientation = 0
             check_position = 0
-            check_lidar = 0
         publishMap(pub_map,msg_map)
         rate.sleep()
-
-	rospy.init_node("mapping")
-
-	rospy.Subscriber("/phantomx/scan",LaserScan,sub_lidar)
-	pub_map = rospy.Publisher("/map",OccupancyGrid,queue_size=10)
-	msg_map = OccupancyGrid()
-
-	msg_map.header.frame_id = "base_link"
-	msg_map.info.map_load_time = rospy.get_rostime()
-	msg_map.info.resolution = 0.1
-	msg_map.info.width  = 500
-	msg_map.info.height = 500
-	msg_map.info.origin.position.x = -25
-	msg_map.info.origin.position.y = -25
-	msg_map.info.origin.position.z = 0
-	msg_map.info.origin.orientation.x = 0
-	msg_map.info.origin.orientation.y = 0
-	msg_map.info.origin.orientation.z = 0
-	msg_map.info.origin.orientation.w = 0
-
-
-	rate = rospy.Rate(5)
-	while not rospy.is_shutdown():
-		mapping()
-		publishMap(pub_map,msg_map)
-		rate.sleep()
 
 
