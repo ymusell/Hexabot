@@ -19,13 +19,13 @@
 double cosy_cosp ;
 double siny_cosp ;
 geometry_msgs::Quaternion orien ;
-geometry_msgs::Vector3 vitesse ;
+geometry_msgs::Vector3 speed ;
 geometry_msgs::Point orientations ;
 geometry_msgs::Point position ;
 
 
 
-geometry_msgs::Point ToEulerAngles(geometry_msgs::Quaternion q) {
+geometry_msgs::Point to_euler_angles(geometry_msgs::Quaternion q) {
     geometry_msgs::Point angles;
 
     // roll (x-axis rotation)
@@ -48,14 +48,14 @@ geometry_msgs::Point ToEulerAngles(geometry_msgs::Quaternion q) {
     return angles;
 }
 
-void chatterCallback(const sensor_msgs::Imu::ConstPtr& msg)
+void chatter_callback(const sensor_msgs::Imu::ConstPtr& msg)
 {
         orien = msg->orientation;
         ROS_INFO("Positionning Node is running");
         
 }
 
-void chatterCallback1(const nav_msgs::Odometry &msg)
+void chatter_callback1(const nav_msgs::Odometry &msg)
 {
     position = msg.pose.pose.position;
 
@@ -71,30 +71,25 @@ int main(int argc, char **argv)
 
 
 
-
-  ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
-  ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
-
-
   ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1);  //Second argument changed to 1:
   ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1);        //We always want the newest values.
   
 
-  ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1, chatterCallback);
-  ros::Subscriber sub = n.subscribe("ground_truth/state", 1, chatterCallback1);
+  ros::Subscriber sub1 = n.subscribe("/phantomx/imu", 1, chatter_callback);
+  ros::Subscriber sub = n.subscribe("ground_truth/state", 1, chatter_callback1);
   
 
 
-  //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
+  //ros::Publisher pub_speed = n.advertise<geometry_msgs::Point>("/vect_speed", 1000);
 
   ros::Rate loop_rate(25);
-// Boucle tant que le master existe (ros::ok())
+
   while (ros::ok()){
 
-    orientations = ToEulerAngles(orien) ;
+    orientations = to_euler_angles(orien) ;
 
 
-    //vitesse_pub.publish(vitesse);
+    //pub_speed.publish(speed);
     position_pub.publish(position);
     orientation_pub.publish(orientations);
 

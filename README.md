@@ -16,20 +16,22 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 
 ### Démarrer la simulation
 
+Pour lancer l'exploration de la grotte, simulation et visualisation incluses:
+
+```bash
+roslaunch phantomx_mapping exploration.launch
+```  
+
+Alternativement, avec une version démo:
 ```bash
 roslaunch phantomx_gazebo phantomx_gazebo.launch
 ```
-Pour lancer gazebo avec la demo walker.py
+puis lancer demo walker.py
 
 ```bash
 rosrun phantomx_gazebo demo_walker.py
 ```
 
-Pour lancer l'exploration de la grotte
-
-```bash
-roslaunch phantomx_mapping exploration.launch
-```
 
 ## Groupe
 

@@ -1,6 +1,6 @@
 # phantomx_mapping 
 
-ROS package providing scripts for mapping the cave as well as the launch file to start the mission.bale. 
+ROS package providing scripts for mapping the cave as well as the launch file to start the mission. 
 
 ## config 
 
