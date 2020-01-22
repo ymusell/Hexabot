@@ -15,6 +15,7 @@ import rospy
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 from tf.transformations import quaternion_from_euler
+from scipy.spatial.transform import Rotation as R
 
 ##############################################################################################
 #      ROS
@@ -49,13 +50,19 @@ def sub_marker_fissures(data):
         nx = np.array(x) + x_rob
         ny = np.array(y) + y_rob
         nz = np.array(z) + z_rob
-        print(len(nx))
 
-        for i in range(len(nx)):
+        r = R.from_euler('zxy', [yaw,pitch,roll]).as_dcm()
+        print(r)
+        n_pos = np.concatenate(([x],[y],[z]), axis=0)
+        n_pos = np.matmul(r,n_pos)+np.array([[x_rob],[y_rob],[z_rob]])
+        
+        #print(roll,pitch,yaw)
+
+        for i in range(n_pos.shape[1]):
             p = Point()
-            p.x = nx[i]
-            p.y = ny[i]
-            p.z = nz[i]
+            p.x = n_pos[0,i]
+            p.y = n_pos[1,i]
+            p.z = n_pos[2,i]
             marker_global.points.append(p)
 
         pub_fissure.publish(marker_global)
@@ -67,6 +74,12 @@ def sub_position(data):
     x_rob = data.x
     y_rob = data.y
     z_rob = data.z
+
+def sub_orientation(data):
+    global roll, pitch, yaw
+    roll = data.x
+    pitch = data.y
+    yaw = data.z
 
 
 ##############################################################################################
@@ -88,6 +101,7 @@ def flag_state(list_nan, flag_full_nan):
 if __name__ == '__main__':
 
     x_rob, y_rob, z_rob = None, None, None
+    roll, pitch, yaw = None, None, None
 
     node_name = 'sort_fissures'
     rospy.init_node(node_name)
@@ -96,6 +110,7 @@ if __name__ == '__main__':
 
     rospy.Subscriber("current_fissure", Marker, sub_marker_fissures)
     rospy.Subscriber("vect_position", Point, sub_position)
+    rospy.Subscriber("vect_orientation", Point, sub_orientation)
     pub_fissure = rospy.Publisher('global_fissure', Marker, queue_size=10)
 
 
@@ -108,7 +123,7 @@ if __name__ == '__main__':
     marker_fissure.type = 8
 
     marker_global = Marker()
-    marker_global.header.frame_id = 'map'
+    marker_global.header.frame_id = 'base_link'
     marker_global.header.stamp = rospy.get_rostime()
     marker_global.id = 0
     marker_global.action = 0

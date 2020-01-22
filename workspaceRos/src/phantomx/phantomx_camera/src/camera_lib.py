@@ -20,8 +20,11 @@ def binary_image_to_xyz(binary_image, depth_image):
 	th_width = w/d_theta
 	th_height = h/d_theta
 	dxy = d*np.cos(th_height)
+	#z = d*np.sin(th_height)
+	#x = dxy*np.cos(th_width)
+	#y = -dxy*np.sin(th_width)
 	z = d*np.sin(th_height)
-	x = dxy*np.cos(th_width)
+	x = d
 	y = -dxy*np.sin(th_width)
 
 	return x,y,z
@@ -92,7 +95,7 @@ if __name__ == '__main__':
 	plt.imshow(depth_image)
 	binary_image = color_image_to_binary(rgb_image)
 
-	plt.imshow(binary_image);plt.show()
+	#plt.imshow(binary_image);plt.show()
 
 	x,y,z = binary_image_to_xyz(binary_image, depth_image)
 

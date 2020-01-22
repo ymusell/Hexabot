@@ -98,8 +98,6 @@ if __name__ == '__main__':
     marker_fissure.color.a = 1.0
 
     grid = create_grid()
-    
-    
 
     while not rospy.is_shutdown():
 
@@ -107,5 +105,11 @@ if __name__ == '__main__':
             binary_image = rgb_fissure_to_binary(rgb_image, grid)
             x,y,z = binary_image_to_xyz(binary_image, depth_image)
             publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
-
+            """
+            plt.subplot('121')
+            plt.imshow(rgb_image)
+            plt.subplot('122')
+            plt.imshow(depth_image)
+            plt.pause(0.01)
+            """
         rate.sleep()
