@@ -2,11 +2,9 @@
 
 <include file="$(find phantomx_gazebo)/launch/phantomx_gazebo.launch" />
 
-
-
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
     <param name="odom_frame" value="base_stabilized" />
-    <param name="scan_topic" value="/phantomx/scan"/>
+    <param name="scan_topic" value="/phantomx/scan_filtre"/>
     <param name="map_size" value="2000"/>
 </node>
 

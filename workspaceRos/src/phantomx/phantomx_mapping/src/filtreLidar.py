@@ -21,6 +21,11 @@ roll = 0
 check_position = 0 #check if we have new data for position and orientation
 check_orientation = 0
 
+lidar = LaserScan()
+
+def sub_lidar(msg):
+    global lidar
+    lidar = msg
 
 def sub_position(msg):
     global pos_x, pos_y, check_position
@@ -42,7 +47,8 @@ if __name__ == "__main__":
 
 
     rospy.init_node("filtreLidar")
-
+    pub_lidar = rospy.Publisher("phantomx/scan_filtre",LaserScan,queue_size=10)
+    rospy.Subscriber("/phantomx/scan",LaserScan,sub_lidar)
     rospy.Subscriber("/vect_position",Point,sub_position)
     rospy.Subscriber("/vect_orientation",Point,sub_orientation)
 
@@ -51,6 +57,7 @@ if __name__ == "__main__":
 
     transformStamped.child_frame_id = "base_link"
     transformStamped.header.frame_id = "base_stabilized"
+
 
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
@@ -71,3 +78,6 @@ if __name__ == "__main__":
 
             check_orientation = 0
             check_position = 0
+            if (roll < 0.1 and pitch < 0.1):
+                pub_lidar.publish(lidar)
+        rate.sleep()
