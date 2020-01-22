@@ -3,11 +3,11 @@
 
 <include file="$(find phantomx_gazebo)/launch/phantomx_gazebo.launch" />
 
-<node name="cave_explorer" pkg="phantomx_control" type="cave_explorer.py" />
-<node name="phantomx_positionning" pkg="phantomx_positionning" type="phantomx_positionning" />
+<node name="wall_follower" pkg="phantomx_control" type="wall_follower.py" />
+<node name="phantomx_positioning" pkg="phantomx_positionning" type="phantomx_positioning" />
 <node name="filtreLidar" pkg="phantomx_mapping" type="filtreLidar.py" />
 
-<include file="$(find phantomx_camera)/launch/camera.launch" />
+<!--include file="$(find phantomx_camera)/launch/camera.launch" /-->
 
 
 <node pkg="hector_imu_attitude_to_tf" type="imu_attitude_to_tf_node" name="imu_attitude_to_tf_node">

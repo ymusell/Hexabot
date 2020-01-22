@@ -52,7 +52,7 @@ def take_action():
     elif regions['front'] < d*0.8 and regions['fleft'] < d*2.0 and regions['fright'] > d:
         state_description = 'case 7 - front and fleft'
         change_state(0)
-    elif regions['front'] < d and regions['fleft'] < d and regions['fright'] < d*0.8:
+    elif regions['front'] < d and regions['fleft'] < d and regions['fright'] < d*0.7:
         state_description = 'case 8 - front and fleft and fright'
         change_state(1)
     elif regions['front'] > d and regions['fleft'] < d and regions['fright'] < d:
@@ -64,15 +64,15 @@ def take_action():
 
 def turn_right():
     robot.set_walk_velocity(0.7, 0, -0.5)
-    rospy.sleep(0.2)
+    rospy.sleep(0.15)
 
 def turn_left():
     robot.set_walk_velocity(0.7, 0, 0.5)
-    rospy.sleep(0.2)
+    rospy.sleep(0.15)
 
 def go_forward():
     robot.set_walk_velocity(1, 0, 0)
-    rospy.sleep(0.2)
+    rospy.sleep(0.15)
 
 if __name__ == '__main__':
     rospy.init_node('hexabot_exploration')

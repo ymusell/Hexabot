@@ -19,10 +19,11 @@
 #include "gazebo_msgs/ModelStates.h"
 #include "nav_msgs/Odometry.h"
 
-ros::Publisher rpy_publisher;
-ros::Subscriber quat_subscriber;
+geometry_msgs::Quaternion orien ;
+geometry_msgs::Point orientation ;
+geometry_msgs::Point position ;
 
-void MsgCallback(const geometry_msgs::Quaternion msg)
+geometry_msgs::Point ToEulerAngles(const geometry_msgs::Quaternion msg)
 {
     tf::Quaternion quat;
     tf::quaternionMsgToTF(msg, quat);
@@ -30,13 +31,24 @@ void MsgCallback(const geometry_msgs::Quaternion msg)
     double roll, pitch, yaw;
     tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
 
-    geometry_msgs::Vector3 rpy;
-    rpy.x = roll;
-    rpy.y = pitch;
-    rpy.z = yaw;
+    geometry_msgs::Point angles;
+    angles.x = roll;
+    angles.y = pitch;
+    angles.z = yaw;
 
-    rpy_publisher.publish(rpy);
-    ROS_INFO("published rpy angles: roll=%f pitch=%f yaw=%f", rpy.x, rpy.y, rpy.z);
+    return angles;
+}
+
+void MsgCallback(const sensor_msgs::Imu::ConstPtr& msg)
+{
+        orien = msg->orientation;
+        ROS_INFO("Positionning Node is running");
+}
+
+void chatterCallback(const nav_msgs::Odometry &msg)
+{
+    position = msg.pose.pose.position;
+
 }
 
 int main(int argc, char **argv)
@@ -44,14 +56,22 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "phantomx_positioning");
     ros::NodeHandle n;
 
-    rpy_publisher = n.advertise<geometry_msgs::Vector3>("/rpy_angles", 1000);
-    quat_subscriber = n.subscribe("/phantomx/imu", 1000, MsgCallback);
+    ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1);
+    ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1);
 
-    ros::Rate loop_rate(5);	
+    ros::Subscriber quat_subscriber = n.subscribe("/phantomx/imu", 1, MsgCallback);
+    ros::Subscriber sub = n.subscribe("ground_truth/state", 1, chatterCallback);
+
+    ros::Rate loop_rate(25); 
     // Boucle tant que le master existe (ros::ok())
     while (ros::ok()){
-	    ros::spinOnce();
-	    loop_rate.sleep();
-	    }
+    	orientation = ToEulerAngles(orien) ;
+        
+    	position_pub.publish(position);
+    	orientation_pub.publish(orientation);
+œ
+    	ros::spinOnce();
+    	loop_rate.sleep();
+	}
     return 0;
 }

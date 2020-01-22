@@ -23,7 +23,7 @@ def take_action():
     
     state_description = ''
     
-    d = 2.5
+    d = 2.
     
     if regions['right'] < 0.4:
         state_description = 'case 0 - right'
@@ -70,7 +70,7 @@ def go_forward():
     rospy.sleep(0.2)
 
 if __name__ == '__main__':
-    rospy.init_node('hexabot_exploration')
+    rospy.init_node('wall_follower')
 
     rospy.loginfo('Instantiating robot Client')
     robot = PhantomX()
