@@ -2,6 +2,12 @@
 
 <include file="$(find phantomx_gazebo)/launch/phantomx_gazebo.launch" />
 
+<node pkg="hector_imu_attitude_to_tf" type="imu_attitude_to_tf_node" name="imu_attitude_to_tf_node">
+        <param name="base_stabilized_frame" value="base_stabilized" />
+        <param name="base_frame" value="base_link"/>
+        <remap from="imu_topic" to="/phantomx/imu"/>
+    </node>
+
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
     <param name="odom_frame" value="base_stabilized" />
     <param name="scan_topic" value="/phantomx/scan_filtre"/>
@@ -14,7 +20,6 @@
 <node name="filtreLidar" pkg="phantomx_mapping" type="filtreLidar.py" />
 
 
-<include file="$(find phantomx_camera)/launch/camera.launch" />
 
 
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find phantomx_mapping)/config/configRviz.rviz" />

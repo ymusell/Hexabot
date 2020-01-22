@@ -82,7 +82,7 @@ int main(int argc, char **argv)
 
   //ros::Publisher vitesse_pub = n.advertise<geometry_msgs::Point>("/vect_vitesse", 1000);
 
-  ros::Rate loop_rate(5);
+  ros::Rate loop_rate(25);
 // Boucle tant que le master existe (ros::ok())
   while (ros::ok()){
 
