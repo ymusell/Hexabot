@@ -83,11 +83,11 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         global regions_
         regions_ = {
-            'left':  min(min(robot.lidar_ranges[260:280]), 10),
-            'fleft': min(min(robot.lidar_ranges[190:260]), 10),
-            'front':  min(min(robot.lidar_ranges[170:190]), 10),
-            'fright':  min(min(robot.lidar_ranges[100:170]), 10),
-            'right':   min(min(robot.lidar_ranges[80:100]), 10)
+            'left':  min(min(robot.lidar_ranges[700:720]), 10),
+            'fleft': min(min(robot.lidar_ranges[380:700]), 10),
+            'front':  min(min(robot.lidar_ranges[340:380]), 10),
+            'fright':  min(min(robot.lidar_ranges[20:340]), 10),
+            'right':   min(min(robot.lidar_ranges[0:20]), 10)
         }
         take_action()
 
