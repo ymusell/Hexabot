@@ -69,10 +69,6 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
 
-<<<<<<< HEAD:workspaceRos/src/phantomx/phantomx_positionning/src/ph_positionning.cpp
-=======
-
->>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572:workspaceRos/src/phantomx/positionnement/src/positionnement.cpp
   ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1000);
   ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1000);
 
@@ -98,9 +94,6 @@ int main(int argc, char **argv)
     loop_rate.sleep();
     }
 return 0;
-<<<<<<< HEAD:workspaceRos/src/phantomx/phantomx_positionning/src/ph_positionning.cpp
 }
 
-=======
->>>>>>> 3505975cae91576b71c81df1a058b71dbf4f0572:workspaceRos/src/phantomx/positionnement/src/positionnement.cpp
 

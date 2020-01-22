@@ -18,7 +18,11 @@ Ceci est un template de dépôt Git pour le cours d'ingénierie système et mod�
 ```bash
 roslaunch phantomx_gazebo phantomx_gazebo.launch
 ```
-Lancer gazebo avec la demo walker.py
+Pour lancer gazebo avec la demo walker.py
+
+```bash
+rosrun phantomx_gazebo demo_walker.py
+```
 
 Pour lancer l'exploration de la grotte
 

@@ -1,15 +1,15 @@
 # phantomx_mapping 
 
-Ce package contient le script permettant de mapper la grotte ainsi que le launch pour lancer la mission globale. 
+ROS package providing scripts for mapping the cave as well as the launch file to start the mission.bale. 
 
 ## config 
 
-Contient la configuration rviz pour la simulation.
+Contains RVIZ configuration file for simulation.
 
 ## launch 
 
-Contient le launch pour lancer la mission "exploration.launch".
+Contains launch file for starting the mission "exploration.launch".
 
 ## src
 
-Contient le script de mapping.
+Contains mapping scripts.

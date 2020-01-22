@@ -1,6 +1,8 @@
 # PhantomX Control 
 
-ROS package providing ROS controller description and launch files for the Phantom X hexapod robot
+ROS package providing a controller for the Phantom X hexapod robot.
+
+These have been tested in simulation and need some work to be used on the real robot, do not use as-is.
 
 ## Usage
 

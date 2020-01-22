@@ -7,8 +7,9 @@ URDF contains joint transmissions for controllers and Gazebo referenced plugins 
 ## Usage
 
 You can display the robot in Rviz with:
-    
-    roslaunch phantomx_decription display.launch
+
+
+	roslaunch phantomx_description display.launch
 
 
 You can load the robot's description and start the Robot State Publisher in a `launch` file with:
