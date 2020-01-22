@@ -97,7 +97,7 @@ if __name__ == '__main__':
     marker_fissure.color.b = 0
     marker_fissure.color.a = 1.0
 
-    grid = create_grid()
+    grid = create_grid(space=1)
 
     while not rospy.is_shutdown():
 
