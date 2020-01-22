@@ -58,8 +58,8 @@ def waiting_ros_camera():
 if __name__ == '__main__':
 
     bridge = CvBridge()
-    depth_image = None
-    rgb_image = None
+    depth_image = 0
+    rgb_image = 0
     height, width = None, None
 
     rospy.Subscriber("/camera/depth/image_raw", Image, sub_image_depth)
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     node_name = 'visualize_camera'
     rospy.init_node(node_name)
     rospy.loginfo("{} is launched".format(node_name))
-    rate = rospy.Rate(10) # 10hz
+    rate = rospy.Rate(5)
 
     marker_fissure = Marker()
     marker_fissure.header.frame_id = 'MP_BODY'
@@ -103,10 +103,9 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
 
-
-        t0 = rospy.get_time()
-        binary_image = rgb_fissure_to_binary(rgb_image, grid)
-        x,y,z = binary_image_to_xyz(binary_image, depth_image)
-        publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
+        if np.sum(depth_image) != 0:
+            binary_image = rgb_fissure_to_binary(rgb_image, grid)
+            x,y,z = binary_image_to_xyz(binary_image, depth_image)
+            publish_point_fissure(pub_fissure, marker_fissure, x,y,z)
 
         rate.sleep()
