@@ -25,7 +25,9 @@ lidar = LaserScan()
 
 def sub_lidar(msg):
     global lidar
-    lidar = msg
+    if (roll < 0.1 and pitch < 0.1):
+        lidar = msg
+        pub_lidar.publish(lidar)
 
 def sub_position(msg):
     global pos_x, pos_y, check_position
@@ -79,6 +81,5 @@ if __name__ == "__main__":
         check_orientation = 0
         check_position = 0
         '''
-        if (roll < 0.1 and pitch < 0.1):
-            pub_lidar.publish(lidar)
+
         rate.sleep()
