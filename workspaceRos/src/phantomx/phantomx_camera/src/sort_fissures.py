@@ -22,7 +22,7 @@ from scipy.spatial.transform import Rotation as R
 ##############################################################################################
 
 def sub_marker_fissures(data):
-    global nb_fissure, marker_global, pub_fissure
+    global nb_fissure_prec, nb_fissure, marker_global, pub_fissure
     global long_fissure, prev_center, list_fissures, prev_points
 
     l_points = data.points
@@ -62,7 +62,8 @@ def sub_marker_fissures(data):
             nb_fissure += 1
             if nb_fissure>1:
                 long_fissure = 0
-                list_fissures += prev_points
+                if (nb_fissure_prec != nb_fissure):
+                    list_fissures += prev_points
 
         if n_pos.shape[1] > long_fissure:
             prev_points = []
@@ -78,7 +79,7 @@ def sub_marker_fissures(data):
             long_fissure = n_pos.shape[1]
             #rospy.loginfo("New fissure"+str(long_fissure))
 
-
+        nb_fissure_prec = nb_fissure
         #print(dist,nb_fissure,len(list_fissures))
         prev_center = center
 
@@ -151,6 +152,7 @@ if __name__ == '__main__':
     #nb_nan = 5
     #list_nan = [False]*nb_nan
     nb_fissure = 0
+    nb_fissure_prec = 0
     prev_center = np.array([[0],[0],[0]])
 
     long_fissure = 0

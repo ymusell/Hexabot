@@ -26,4 +26,4 @@ Library used for testing purposes.
 
 ### sort fissures
 
-Script that subscribes to which subscribes to the current points of a fault and which classifies each crack.
+Script that subscribes the current points of a fissure, it will classify each crack, count and record them.
