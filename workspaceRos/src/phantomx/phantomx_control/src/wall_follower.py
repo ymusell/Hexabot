@@ -25,7 +25,7 @@ def take_action():
     
     d = 2.
     
-    if regions['right'] < 0.4:
+    if regions['right'] < 0.5:
         state_description = 'case 0 - right'
         change_state(1)
     elif regions['front'] > d and regions['fleft'] > d and regions['fright'] > d:
@@ -83,11 +83,11 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         global regions_
         regions_ = {
-            'left':  min(min(robot.lidar_ranges[700:720]), 10),
-            'fleft': min(min(robot.lidar_ranges[380:700]), 10),
+            'left':  min(min(robot.lidar_ranges[680:720]), 10),
+            'fleft': min(min(robot.lidar_ranges[380:680]), 10),
             'front':  min(min(robot.lidar_ranges[340:380]), 10),
-            'fright':  min(min(robot.lidar_ranges[20:340]), 10),
-            'right':   min(min(robot.lidar_ranges[0:20]), 10)
+            'fright':  min(min(robot.lidar_ranges[40:340]), 10),
+            'right':   min(min(robot.lidar_ranges[0:40]), 10)
         }
         take_action()
 

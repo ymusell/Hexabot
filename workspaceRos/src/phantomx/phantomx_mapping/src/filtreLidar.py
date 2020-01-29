@@ -49,37 +49,37 @@ if __name__ == "__main__":
 
 
     rospy.init_node("filtreLidar")
-    pub_lidar = rospy.Publisher("phantomx/scan_filtre",LaserScan,queue_size=1)
+    pub_lidar = rospy.Publisher("phantomx/scan_filtre",LaserScan,queue_size=10)
     rospy.Subscriber("/phantomx/scan",LaserScan,sub_lidar)
     rospy.Subscriber("/vect_position",Point,sub_position)
     rospy.Subscriber("/vect_orientation",Point,sub_orientation)
 
-    #br = tf2_ros.StaticTransformBroadcaster()
-    #transformStamped = TransformStamped()
+    br = tf2_ros.StaticTransformBroadcaster()
+    transformStamped = TransformStamped()
 
-    #transformStamped.child_frame_id = "base_link"
-    #transformStamped.header.frame_id = "base_stabilized"
+    transformStamped.child_frame_id = "base_link"
+    transformStamped.header.frame_id = "base_stabilized"
 
 
     rate = rospy.Rate(25)
     while not rospy.is_shutdown():
-        #if ( (check_orientation or check_position)):
-        '''
-        q = tf.transformations.quaternion_from_euler(0,0,heading)
-        transformStamped.header.stamp = rospy.get_rostime()
-        transformStamped.transform.translation.x = pos_x
-        transformStamped.transform.translation.y = pos_y
-        transformStamped.transform.rotation.x = q[0]
-        transformStamped.transform.rotation.y = q[1]
-        transformStamped.transform.rotation.z = q[2]
-        transformStamped.transform.rotation.w = q[3]
+        if ( (check_orientation or check_position)):
+
+            q = tf.transformations.quaternion_from_euler(0,0,heading)
+            transformStamped.header.stamp = rospy.get_rostime()
+            transformStamped.transform.translation.x = pos_x
+            transformStamped.transform.translation.y = pos_y
+            transformStamped.transform.rotation.x = q[0]
+            transformStamped.transform.rotation.y = q[1]
+            transformStamped.transform.rotation.z = q[2]
+            transformStamped.transform.rotation.w = q[3]
 
 
-        br.sendTransform(transformStamped)
+            br.sendTransform(transformStamped)
 
 
-        check_orientation = 0
-        check_position = 0
-        '''
+            check_orientation = 0
+            check_position = 0
+
 
         rate.sleep()

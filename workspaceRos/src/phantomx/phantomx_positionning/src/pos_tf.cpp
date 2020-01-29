@@ -56,8 +56,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "phantomx_positioning");
     ros::NodeHandle n;
 
-    ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 1);
-    ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 1);
+    ros::Publisher orientation_pub = n.advertise<geometry_msgs::Point>("/vect_orientation", 10);
+    ros::Publisher position_pub = n.advertise<geometry_msgs::Point>("/vect_position", 10);
 
     ros::Subscriber quat_subscriber = n.subscribe("/phantomx/imu", 1, msg_callback);
     ros::Subscriber sub = n.subscribe("ground_truth/state", 1, chatter_callback);
@@ -69,7 +69,6 @@ int main(int argc, char **argv)
         
     	position_pub.publish(position);
     	orientation_pub.publish(orientation);
-
     	ros::spinOnce();
     	loop_rate.sleep();
 	}
